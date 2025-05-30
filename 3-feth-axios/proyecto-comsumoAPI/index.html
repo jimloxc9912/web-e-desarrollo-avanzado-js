@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Consulta de Países - REST Countries API</title>
+    <!-- Incluyendo axios para poderlo utilizar-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./src/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <h1>Sistema de Información de Países</h1>
+            <p class="subtitle">Consulta datos oficiales de países mediante REST Countries API</p>
+        </div>
+        
+        <!-- Controls Section -->
+        <div class="controls-section">
+            <div class="region-filter">
+                <label class="filter-label" for="region-select">Filtrar por región:</label>
+                <select id="region-select">
+                    <option value="">Todas las regiones</option>
+                    <option value="africa">África</option>
+                    <option value="americas">América</option>
+                    <option value="asia">Asia</option>
+                    <option value="europe">Europa</option>
+                    <option value="oceania">Oceanía</option>
+                </select>
+            </div>
+
+            <div class="controls">
+                <button id="fetch-btn">Consultar con Fetch API</button>
+                <button id="axios-btn">Consultar con Axios</button>
+            </div>
+        </div>
+        
+        <!-- Data Container -->
+        <div id="data-container">
+            <div class="welcome-message">
+                Seleccione un método de consulta para visualizar la información de países
+            </div>
+        </div>
+
+        <div class="stats-bar" id="stats-bar" style="display: none;">
+            <div class="stat-item">
+                <span class="stat-number" id="country-count">0</span>
+                <span>Países mostrados</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="region-count">0</span>
+                <span>Regiones</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="./src/scripts/fetchService.js"></script>
+    <script src="./src/scripts/axiosService.js"></script>
+    <script src="./src/scripts/app.js"></script>
+</body>
+</html>

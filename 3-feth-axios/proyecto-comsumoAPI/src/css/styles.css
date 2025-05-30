@@ -1,0 +1,463 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+    color: #1a202c;
+    line-height: 1.6;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #ffffff;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Header section */
+.header-section {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+/* Título principal */
+h1 {
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+}
+
+/* Sección de controles */
+.controls-section {
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Filtro de región */
+.region-filter {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.filter-label {
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+select {
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 2px solid #e2e8f0;
+    font-size: 0.95rem;
+    background: #ffffff;
+    color: #2d3748;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 180px;
+    font-weight: 500;
+}
+
+select:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+select:hover {
+    border-color: #cbd5e0;
+}
+
+/* Controles de botones */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+button {
+    background: #3182ce;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 160px;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background: #2c5282;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+button:hover::after {
+    width: 100px;
+    height: 100px;
+}
+
+/* Contenedor de datos */
+#data-container {
+    padding: 30px;
+    background: #f7fafc;
+    min-height: 400px;
+}
+
+/* Grid de países */
+.countries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+/* Tarjeta de país */
+.country-card {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.country-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    border-color: #cbd5e0;
+}
+
+/* Bandera del país */
+.country-flag {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Contenido de la tarjeta */
+.card-content {
+    padding: 16px;
+}
+
+/* Nombre del país */
+.country-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 12px;
+    letter-spacing: -0.25px;
+    line-height: 1.3;
+}
+
+/* Información del país */
+.country-info {
+    color: #4a5568;
+    line-height: 1.5;
+    font-size: 0.85rem;
+}
+
+.country-info p {
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.country-info strong {
+    color: #2d3748;
+    font-weight: 600;
+    min-width: 70px;
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+.info-value {
+    text-align: right;
+    flex: 1;
+    margin-left: 10px;
+    font-size: 0.8rem;
+    word-break: break-word;
+}
+
+/* Separador en las tarjetas */
+.info-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 8px 0;
+}
+
+/* Estados de carga y error */
+.loading {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #3182ce;
+    padding: 60px 20px;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.loading::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e2e8f0;
+    border-top: 2px solid #3182ce;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error {
+    text-align: center;
+    color: #e53e3e;
+    font-size: 1rem;
+    padding: 25px;
+    background: #ffffff;
+    border: 2px solid #fed7d7;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #e53e3e;
+}
+
+/* Título de método */
+.method-title {
+    text-align: center;
+    color: #2d3748;
+    margin-bottom: 30px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.method-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: #3182ce;
+}
+
+/* Mensaje de bienvenida */
+.welcome-message {
+    text-align: center;
+    color: #4a5568;
+    padding: 60px 30px;
+    font-size: 1.1rem;
+    background: #ffffff;
+    border: 2px dashed #cbd5e0;
+    border-radius: 8px;
+    font-weight: 400;
+}
+
+.welcome-message::before {
+    content: '🌍';
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+/* Estadísticas */
+.stats-bar {
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 5px;
+}
+
+/* Animaciones mejoradas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.country-card {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 0;
+    }
+    
+    .header-section {
+        padding: 30px 20px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .controls-section {
+        padding: 20px;
+    }
+    
+    .region-filter {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    button {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    #data-container {
+        padding: 20px;
+    }
+    
+    .countries-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    .card-content {
+        padding: 14px;
+    }
+    
+    .stats-bar {
+        padding: 15px 20px;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    select {
+        min-width: 150px;
+    }
+    
+    .country-name {
+        font-size: 1.2rem;
+    }
+    
+    .country-info {
+        font-size: 0.9rem;
+    }
+}
