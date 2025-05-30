@@ -1,0 +1,241 @@
+/* Estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0f0e17;
+    color: #fffffe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor del formulario */
+.container {
+    background-color: #1a1a2e;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(101, 221, 255, 0.3);
+    width: 100%;
+    max-width: 500px;
+    transition: all 0.5s ease;
+}
+
+h1 {
+    color: #e53170;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-family: 'MedievalSharp', cursive;
+}
+
+p {
+    color: #a7a9be;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Formulario */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #ff8906;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #2e2f3e;
+    border-radius: 8px;
+    background-color: #242535;
+    color: #fffffe;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #e53170;
+}
+
+.error {
+    color: #f25f4c;
+    font-size: 14px;
+    margin-top: 5px;
+    min-height: 20px;
+    display: block;
+}
+
+button {
+    background-color: #e53170;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #c41c5a;
+    transform: translateY(-2px);
+}
+
+/* Portal Mágico */
+.portal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 100;
+}
+
+.portal {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.portal-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(101, 221, 255, 0.8) 0%, rgba(101, 221, 255, 0) 70%);
+    animation: pulse 3s infinite alternate;
+}
+
+.portal-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: #65ddff;
+    border-left-color: #65ddff;
+    animation: spin 6s linear infinite;
+}
+
+/* ARREGLO: Centrado perfecto del texto en el portal */
+.welcome-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 80%;
+    pointer-events: none;
+}
+
+/* Texto mágico */
+.magic-text {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 2rem;
+    text-shadow: 0 0 10px #ff8906;
+}
+
+.magic-name {
+    font-family: 'UnifrakturMaguntia', cursive;
+    color: #ffcc00;
+    font-size: 2.5rem;
+    display: block;
+    margin: 10px 0;
+    text-shadow: 0 0 15px #ff8906;
+}
+
+.magic-sub {
+    font-family: 'MedievalSharp', cursive;
+    margin: 15px 0;
+    opacity: 0.9;
+}
+
+/* Botón cerrar portal - ARREGLO: Agregué z-index y position */
+#close-portal {
+    background-color: #ff8906;
+    max-width: 200px;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 101;
+}
+
+#close-portal:hover {
+    background-color: #e67700;
+}
+
+/* Estrellas de fondo - ARREGLO: Agregué pointer-events: none */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 20px 30px, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 40px 70px, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, white, rgba(0,0,0,0));
+    background-size: 100px 100px;
+    animation: twinkle 100s linear infinite;
+    pointer-events: none;
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    100% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes twinkle {
+    0% { background-position: 0 0; }
+    100% { background-position: -1000px 500px; }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .portal {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .magic-text {
+        font-size: 1.5rem;
+    }
+    
+    .magic-name {
+        font-size: 2rem;
+    }
+}
