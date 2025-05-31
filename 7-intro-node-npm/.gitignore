@@ -1,0 +1,12 @@
+# Ignora la carpeta node_modules
+node_modules/
+
+# Archivos de logs
+*.log
+
+# Archivos del sistema (Mac, Windows)
+.DS_Store
+Thumbs.db
+
+# Variables de entorno
+.env
