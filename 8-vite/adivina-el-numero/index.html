@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el número</title>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Adivina el número</h1>
+        <p class="subtitle">La computadora ha generado un número. ¡Adivínalo!</p>
+        
+        <div class="difficulty-selector">
+            <p>Selecciona la dificultad:</p>
+            <button class="difficulty-btn active" data-range="100">Fácil (1-100)</button>
+            <button class="difficulty-btn" data-range="500">Medio (1-500)</button>
+            <button class="difficulty-btn" data-range="1000">Difícil (1-1000)</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="intentos">0</span>
+                <span class="stat-label">Intentos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="record">-</span>
+                <span class="stat-label">Mejor Record</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="rango">1-100</span>
+                <span class="stat-label">Rango</span>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <input type="number" id="numero" placeholder="¿Tu número?" min="1" max="100">
+            <button id="adivinar">🎲 Adivinar</button>
+        </div>
+
+        <p id="mensaje">¡Ingresa tu primer número!</p>
+        <p class="hint" id="hint"></p>
+
+        <button class="reset-btn" id="reiniciar">🔄 Nuevo Juego</button>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
